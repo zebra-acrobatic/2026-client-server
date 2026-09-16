@@ -16,7 +16,7 @@ ssh username@server-address
 
 **Example:**
 ```bash
-ssh student@192.168.1.50
+ssh alex@192.168.1.50
 ```
 
 The first time you connect to a new server, you'll see something like this:
@@ -53,7 +53,7 @@ You give the public key to servers you want to log in to. The server can then ve
 
 **Generate a key pair:**
 ```bash
-ssh-keygen -t ed25519 -C "student@example.com"
+ssh-keygen -t ed25519 -C "alex@example.com"
 ```
 
 This creates:
@@ -62,7 +62,7 @@ This creates:
 
 **Copy your public key to a server so you can log in without a password:**
 ```bash
-ssh-copy-id student@192.168.1.50
+ssh-copy-id alex@192.168.1.50
 ```
 
 This appends your public key to `~/.ssh/authorized_keys` on the remote server.
@@ -99,7 +99,7 @@ PermitRootLogin no
 PasswordAuthentication no
 
 # Limit which users can SSH in
-AllowUsers student alice
+AllowUsers alex alice
 ```
 
 **Setting up a login banner:**
@@ -123,7 +123,7 @@ Instead of typing long commands, you can define shortcuts:
 ```
 Host myserver
     HostName 192.168.1.50
-    User student
+    User alex
     Port 2222
     IdentityFile ~/.ssh/id_ed25519
 ```
@@ -139,7 +139,7 @@ ssh myserver
 
 **Start an interactive SFTP session:**
 ```bash
-sftp student@192.168.1.50
+sftp alex@192.168.1.50
 ```
 
 Once connected, you get an FTP-like prompt:
@@ -157,10 +157,10 @@ sftp> exit             # close the session
 **Copy a single file without an interactive session (`scp`, a simpler alternative):**
 ```bash
 # Copy a local file to the server
-scp report.pdf student@192.168.1.50:/home/student/
+scp report.pdf alex@192.168.1.50:/home/alex/
 
 # Copy a file from the server to your machine
-scp student@192.168.1.50:/home/student/notes.txt .
+scp alex@192.168.1.50:/home/alex/notes.txt .
 ```
 
 ### Restricting Users to SFTP Only
